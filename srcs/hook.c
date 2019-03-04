@@ -6,7 +6,7 @@
 /*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 17:39:48 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/03/04 20:24:03 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/03/04 21:41:37 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,16 @@
 
 int		ft_mouse_down(int but, int x, int y, t_mlx *mlx)
 {
-	//	x = 0;
-	//	y = 0;
 	if (but == 4)
 	{
-		mlx->cam.offsetx += (double)((x - WIN_WIDTH / 2 + mlx->cam.offsetx) * 0.1f);
-		mlx->cam.offsety += (double)((y - WIN_HEIGHT / 2 + mlx->cam.offsety) * 0.1f);
+		mlx->cam.offsetx += (double)((x - (double)WIN_WIDTH / 2 + mlx->cam.offsetx) * (1.1f - 1.0f));
+		mlx->cam.offsety += (double)((y - (double)WIN_HEIGHT / 2 + mlx->cam.offsety) * (1.1f - 1.0f));
 		mlx->cam.scale *= 1.1f;
 	}
 	if (but == 5)
 	{
-		mlx->cam.offsetx -= (double)((x - WIN_WIDTH / 2 + mlx->cam.offsetx) * 0.1f);
-		mlx->cam.offsety -= (double)((y - WIN_HEIGHT / 2 + mlx->cam.offsety) * 0.1f);
+		mlx->cam.offsetx -= (double)((x - WIN_WIDTH / 2 + mlx->cam.offsetx) * (1.1f - 1.0f));
+		mlx->cam.offsety -= (double)((y - WIN_HEIGHT / 2 + mlx->cam.offsety) * (1.1f - 1.0f));
 		mlx->cam.scale *= 0.9f;
 	}
 	ft_launch_fractol(mlx);
