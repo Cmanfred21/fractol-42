@@ -6,7 +6,7 @@
 /*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 18:35:48 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/03/04 20:43:43 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/03/04 21:52:08 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,10 @@ static void	ft_return(char *str)
 	exit(1);
 }
 
-static int	ft_check_arg(int argc, char **argv)
+static int	ft_check_arg(int argc, char *argv)
 {
-	if (argc != 2 || (ft_strcmp(argv[1], "julia") &&
-				ft_strcmp(argv[1], "mandelbrot")))
+	if (argc < 2 || (ft_strcmp(argv, "julia") &&
+				ft_strcmp(argv, "mandelbrot")))
 	{
 		ft_putendl("usage: ./fractol fractol_name");
 		ft_putendl("availavle names: julia, mandelbrot");
@@ -71,15 +71,23 @@ static int	ft_check_arg(int argc, char **argv)
 
 int		main(int argc, char **argv)
 {
-	t_mlx	*mlx;
+	t_mlx	**mlx;
+	void	*init;
+	int		i;
 
-	if (ft_check_arg(argc, argv))
-		return (1);
-	if (!(mlx = ft_init(argv[1][0])))
-		ft_return("error in memory allocation");
-	ft_init_fractol(mlx);
-	ft_launch_fractol(mlx);
-	ft_hook(mlx);
-	mlx_loop(mlx->init);
+	i = -1;
+	init = mlx_init();
+	mlx = (t_mlx**)ft_memalloc(sizeof(t_mlx *) * argc);
+	while (++i < argc - 1)
+	{
+		if (ft_check_arg(argc, argv[i + 1]))
+			return (1);
+		if (!(mlx[i] = ft_init(argv[i + 1][0], init)))
+			ft_return("error in memory allocation");
+		ft_init_fractol(mlx[i]);
+		ft_launch_fractol(mlx[i]);
+		ft_hook(mlx[i]);
+	}
+	mlx_loop(init);
 	return (0);
 }

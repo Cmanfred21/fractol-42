@@ -6,7 +6,7 @@
 /*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 16:39:40 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/03/04 15:49:30 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/03/04 21:49:19 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct	s_pthrdata
 
 void	*ft_comand_threads(void *inc);
 
-t_mlx	*ft_init(char frname);
+t_mlx	*ft_init(char frname, void *init);
 
 void	ft_hook(t_mlx *mlx);
 
