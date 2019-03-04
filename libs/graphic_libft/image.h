@@ -6,7 +6,7 @@
 /*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 17:43:16 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/02/26 18:11:27 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/03/04 20:24:05 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ typedef struct	s_cam
 	double		offsetx;
 	double		offsety;
 	double		scale;
+	int			zoomx;
+	int			zoomy;
 }				t_cam;
 
 typedef struct	s_mouse
@@ -42,15 +44,33 @@ typedef struct	s_mouse
 	int			prevx;
 	int			prevy;
 	int			down;
+	int			flag;
 }				t_mouse;
+
+typedef	struct	s_fractol
+{
+	double		c_im;
+	double		c_re;
+	double		old_re;
+	double		old_im;
+	double		new_re;
+	double		new_im;
+	int			iter;
+}				t_fractol;
+	
 
 typedef struct	s_mlx
 {
 	void		*init;
 	void		*window;
 	t_image		*image;
-	t_cam		*cam;
-	t_mouse		*mouse;
+	t_cam		cam;
+	t_mouse		mouse;
+	t_fractol	fractol;
+	int			pthreads;
+	int			ymin;
+	int			ymax;
+	char		name;
 }				t_mlx;
 
 t_image			*ft_delimage(t_mlx *mlx, t_image *img);

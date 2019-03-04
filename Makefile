@@ -6,16 +6,17 @@
 #    By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/09 14:44:38 by cmanfred          #+#    #+#              #
-#    Updated: 2019/02/26 18:50:55 by cmanfred         ###   ########.fr        #
+#    Updated: 2019/03/04 15:53:12 by cmanfred         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fractol
-FLAGS = -Wall -Wextra -Werror -I includes/
+FLAGS = -Wall -Wextra -Werror -Ofast -I includes/
 INCLUDES = -I ./libs/libft/ -I ./libs/minilibx/ -I ./libs/graphic_libft/
 LIBFLAGS = -L./libs/libft -lft -L./libs/minilibx -lmlx -framework OpenGL \
-		   -framework AppKit -L./libs/graphic_libft/ -lgft
-FILES = main.c
+		   -framework AppKit -L./libs/graphic_libft/ -lgft \
+		   -lpthread
+FILES = main.c init.c hook.c julia.c
 SRCS = $(addprefix srcs/, $(FILES))
 OBJ = $(addprefix objectives/, $(FILES:.c=.o))
 
