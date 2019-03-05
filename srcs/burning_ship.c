@@ -6,7 +6,7 @@
 /*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 21:52:50 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/03/05 22:00:54 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/03/05 22:37:52 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ static void	count_point(int x, int y, t_fractol f, t_mlx *mlx)
 		if (ft_change_num(&f))
 			break ;
 	if (i < f.iter - 1)
-		ft_image_set_pixel(mlx->image, x, y, ft_pixel_color(i, f.iter, f.color));
+		ft_image_set_pixel(mlx->image, x, y, ft_pixel_color(i, f.iter,
+					f.color));
 }
 
 void		*ft_burning_ship(void *inc)

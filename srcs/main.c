@@ -6,7 +6,7 @@
 /*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 18:35:48 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/03/05 22:02:00 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/03/05 22:46:17 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ void		ft_launch_fractol(t_mlx *mlx)
 	int			i;
 	int			step;
 
-	step = WIN_HEIGHT / mlx->pthreads + WIN_HEIGHT - WIN_HEIGHT / mlx->pthreads * mlx->pthreads;
+	step = WIN_HEIGHT / mlx->pthreads + WIN_HEIGHT -
+		WIN_HEIGHT / mlx->pthreads * mlx->pthreads;
 	threads = (pthread_t *)ft_memalloc(sizeof(pthread_t) * mlx->pthreads);
 	data = (t_mlx *)ft_memalloc(sizeof(t_mlx) * mlx->pthreads);
 	ft_bzero(mlx->image->data, WIN_WIDTH * WIN_HEIGHT * mlx->image->bitspp);
@@ -79,7 +80,7 @@ static int	ft_check_arg(int argc, char *argv)
 	return (0);
 }
 
-int		main(int argc, char **argv)
+int			main(int argc, char **argv)
 {
 	t_mlx	**mlx;
 	void	*init;

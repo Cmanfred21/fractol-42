@@ -6,7 +6,7 @@
 /*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 17:39:48 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/03/05 22:18:21 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/03/05 22:45:08 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,18 @@ static int	ft_mouse_down(int but, int x, int y, t_mlx *mlx)
 {
 	if (but == 4)
 	{
-		mlx->cam.offsetx += (double)((x - (double)WIN_WIDTH / 2 + mlx->cam.offsetx) * (1.1f - 1.0f));
-		mlx->cam.offsety += (double)((y - (double)WIN_HEIGHT / 2 + mlx->cam.offsety) * (1.1f - 1.0f));
+		mlx->cam.offsetx += ((x - WIN_WIDTH / 2 +
+					mlx->cam.offsetx) * (1.1f - 1.0f));
+		mlx->cam.offsety += ((y - WIN_HEIGHT / 2 +
+					mlx->cam.offsety) * (1.1f - 1.0f));
 		mlx->cam.scale *= 1.1f;
 	}
 	if (but == 5)
 	{
-		mlx->cam.offsetx -= (double)((x - WIN_WIDTH / 2 + mlx->cam.offsetx) * (1.1f - 1.0f));
-		mlx->cam.offsety -= (double)((y - WIN_HEIGHT / 2 + mlx->cam.offsety) * (1.1f - 1.0f));
+		mlx->cam.offsetx -= ((x - WIN_WIDTH / 2
+					+ mlx->cam.offsetx) * (1.1f - 1.0f));
+		mlx->cam.offsety -= ((y - WIN_HEIGHT / 2
+					+ mlx->cam.offsety) * (1.1f - 1.0f));
 		mlx->cam.scale *= 0.9f;
 	}
 	mlx->mouse.down |= (1 << but);
@@ -52,7 +56,7 @@ static int	hook_keydown(int key, t_mlx *mlx)
 	else if (key == 6)
 		mlx->pthreads += 5;
 	else if (key == 7)
-		mlx->pthreads -=5;
+		mlx->pthreads -= 5;
 	else if (key >= 18 && key <= 23)
 	{
 		mlx->fractol.color = key;
@@ -61,7 +65,7 @@ static int	hook_keydown(int key, t_mlx *mlx)
 	return (0);
 }
 
-static int		ft_mouse_up(int but, int x, int y, t_mlx *mlx)
+static int	ft_mouse_up(int but, int x, int y, t_mlx *mlx)
 {
 	x = 0;
 	y = 0;
@@ -90,14 +94,6 @@ static int	ft_mouse_move(int x, int y, t_mlx *mlx)
 		mlx->cam.offsety -= (y - mlx->mouse.prevy);
 	}
 	ft_launch_fractol(mlx);
-	return (0);
-}
-
-static int	ft_close_window(int	*argc)
-{
-	(*argc)--;
-	if (*argc == 1)
-		exit (0);
 	return (0);
 }
 

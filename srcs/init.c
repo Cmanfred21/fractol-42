@@ -6,7 +6,7 @@
 /*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 15:43:50 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/03/05 22:18:17 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/03/05 22:38:36 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_mlx	*ft_init(char frname, void *init)
 		return (NULL);
 	mlx->init = init;
 	if ((mlx->window = mlx_new_window(mlx->init, WIN_WIDTH,
-										  WIN_HEIGHT, "fractol")) == NULL ||
+										WIN_HEIGHT, "fractol")) == NULL ||
 			(mlx->image = ft_new_image(mlx)) == NULL)
 		return (NULL);
 	mlx->cam.offsetx = 0;

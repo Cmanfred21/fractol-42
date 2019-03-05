@@ -6,7 +6,7 @@
 /*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 17:43:16 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/03/05 20:51:32 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/03/05 22:47:42 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ typedef	struct	s_fractol
 	int			iter;
 	int			color;
 }				t_fractol;
-	
 
 typedef struct	s_mlx
 {
