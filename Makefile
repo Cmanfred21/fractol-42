@@ -6,7 +6,7 @@
 #    By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/09 14:44:38 by cmanfred          #+#    #+#              #
-#    Updated: 2019/03/04 15:53:12 by cmanfred         ###   ########.fr        #
+#    Updated: 2019/03/05 21:59:49 by cmanfred         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ INCLUDES = -I ./libs/libft/ -I ./libs/minilibx/ -I ./libs/graphic_libft/
 LIBFLAGS = -L./libs/libft -lft -L./libs/minilibx -lmlx -framework OpenGL \
 		   -framework AppKit -L./libs/graphic_libft/ -lgft \
 		   -lpthread
-FILES = main.c init.c hook.c julia.c
+FILES = main.c init.c hook.c julia.c additional_func.c mandelbrot.c spider.c \
+		burning_ship.c
 SRCS = $(addprefix srcs/, $(FILES))
 OBJ = $(addprefix objectives/, $(FILES:.c=.o))
 

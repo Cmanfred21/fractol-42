@@ -6,7 +6,7 @@
 /*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 17:39:48 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/03/04 21:41:37 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/03/05 22:18:21 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include <math.h>
 
-int		ft_mouse_down(int but, int x, int y, t_mlx *mlx)
+static int	ft_mouse_down(int but, int x, int y, t_mlx *mlx)
 {
 	if (but == 4)
 	{
@@ -28,8 +28,8 @@ int		ft_mouse_down(int but, int x, int y, t_mlx *mlx)
 		mlx->cam.offsety -= (double)((y - WIN_HEIGHT / 2 + mlx->cam.offsety) * (1.1f - 1.0f));
 		mlx->cam.scale *= 0.9f;
 	}
-	ft_launch_fractol(mlx);
 	mlx->mouse.down |= (1 << but);
+	ft_launch_fractol(mlx);
 	return (0);
 }
 
@@ -37,22 +37,27 @@ static int	hook_keydown(int key, t_mlx *mlx)
 {
 	if (key == 49)
 		mlx->mouse.flag++;
-	if (key == 53)
+	else if (key == 53)
 		exit(EXIT_SUCCESS);
-	if (key == 12)
+	else if (key == 12)
 	{
 		mlx->fractol.iter++;
 		ft_launch_fractol(mlx);
 	}
-	if (key == 14)
+	else if (key == 14)
 	{
 		mlx->fractol.iter--;
 		ft_launch_fractol(mlx);
 	}
-	if (key == 6)
+	else if (key == 6)
 		mlx->pthreads += 5;
-	if (key == 7)
+	else if (key == 7)
 		mlx->pthreads -=5;
+	else if (key >= 18 && key <= 23)
+	{
+		mlx->fractol.color = key;
+		ft_launch_fractol(mlx);
+	}
 	return (0);
 }
 
@@ -76,8 +81,8 @@ static int	ft_mouse_move(int x, int y, t_mlx *mlx)
 	mlx->mouse.y = y;
 	if (!(mlx->mouse.flag))
 	{
-		mlx->fractol.c_re += (x - mlx->mouse.prevx) / 5000.f;
-		mlx->fractol.c_im += (y - mlx->mouse.prevy) / 5000.f;
+		mlx->fractol.c_re += (x - mlx->mouse.prevx) / 500.f;
+		mlx->fractol.c_im += (y - mlx->mouse.prevy) / 500.f;
 	}
 	else if (mlx->mouse.down & (1 << 1))
 	{
@@ -88,10 +93,19 @@ static int	ft_mouse_move(int x, int y, t_mlx *mlx)
 	return (0);
 }
 
-void		ft_hook(t_mlx *mlx)
+static int	ft_close_window(int	*argc)
+{
+	(*argc)--;
+	if (*argc == 1)
+		exit (0);
+	return (0);
+}
+
+void		ft_hook(t_mlx *mlx, int *argc)
 {
 	mlx_key_hook(mlx->window, hook_keydown, mlx);
 	mlx_hook(mlx->window, 4, 0, ft_mouse_down, mlx);
 	mlx_hook(mlx->window, 5, 0, ft_mouse_up, mlx);
 	mlx_hook(mlx->window, 6, 0, ft_mouse_move, mlx);
+	mlx_hook(mlx->window, 17, 0, ft_close_window, argc);
 }

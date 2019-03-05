@@ -6,7 +6,7 @@
 /*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 15:43:50 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/03/04 21:48:23 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/03/05 22:18:17 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,8 @@ t_mlx	*ft_init(char frname, void *init)
 	mlx->pthreads = 120;
 	mlx->name = frname;
 	mlx->fractol.iter = 24;
+	mlx->fractol.color = 1;
+	if (frname != 'j')
+		mlx->mouse.flag = 1;
 	return (mlx);
 }

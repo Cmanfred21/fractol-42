@@ -6,7 +6,7 @@
 /*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 17:43:16 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/03/04 21:41:58 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/03/05 20:51:32 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 # include "libft.h"
 # include "mlx.h"
 
-# define WIN_WIDTH 1920
-# define WIN_HEIGHT 1080
+# define WIN_WIDTH 854
+# define WIN_HEIGHT 480
 
 typedef struct	s_image
 {
@@ -56,6 +56,7 @@ typedef	struct	s_fractol
 	double		new_re;
 	double		new_im;
 	int			iter;
+	int			color;
 }				t_fractol;
 	
 

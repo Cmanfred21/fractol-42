@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   julia.c                                            :+:      :+:    :+:   */
+/*   mandelbrot.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/01 18:04:59 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/03/05 21:37:30 by cmanfred         ###   ########.fr       */
+/*   Created: 2019/03/05 15:26:05 by cmanfred          #+#    #+#             */
+/*   Updated: 2019/03/05 22:18:23 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ static void	count_point(int x, int y, t_fractol f, t_mlx *mlx)
 	int		i;
 
 	i = -1;
-	f.new_re = 1.5 * (x + mlx->cam.offsetx - WIN_WIDTH / 2)
+	f.c_re = 1.5 * (x + mlx->cam.offsetx - WIN_WIDTH / 2)
 		/ (0.5 * mlx->cam.scale * WIN_WIDTH);
-	f.new_im = (y + mlx->cam.offsety - WIN_HEIGHT / 2)
+	f.c_im = (y + mlx->cam.offsety - WIN_HEIGHT / 2)
 		/ (0.5 * mlx->cam.scale * WIN_HEIGHT);
 	i = -1;
 	while (++i < f.iter)
@@ -41,7 +41,7 @@ static void	count_point(int x, int y, t_fractol f, t_mlx *mlx)
 		ft_image_set_pixel(mlx->image, x, y, ft_pixel_color(i, f.iter, f.color));
 }
 
-void		*ft_julia(void *inc)
+void		*ft_mandelbrot(void *inc)
 {
 	t_fractol	f;
 	int			x;

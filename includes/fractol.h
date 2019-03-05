@@ -6,7 +6,7 @@
 /*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 16:39:40 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/03/04 21:49:19 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/03/05 22:02:33 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,21 @@ typedef struct	s_pthrdata
 	t_mlx		*mlx;
 }				t_pthrdata;
 
-//pthread_mutex_t lock;
+int		ft_pixel_color(int iter, int max, int scheme);
+
+void    *ft_spider(void *inc);
+
+void	*ft_mandelbrot(void *inc);
+
+void	*ft_burning_ship(void *inc);
+
+void	*ft_fractol_hq(void *inc);
 
 void	*ft_comand_threads(void *inc);
 
 t_mlx	*ft_init(char frname, void *init);
 
-void	ft_hook(t_mlx *mlx);
+void	ft_hook(t_mlx *mlx, int *argc);
 
 void	*ft_julia(void *mlx);
 
