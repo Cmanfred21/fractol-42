@@ -6,7 +6,7 @@
 /*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 17:39:48 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/03/05 22:45:08 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/03/06 13:53:50 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,24 +44,18 @@ static int	hook_keydown(int key, t_mlx *mlx)
 	else if (key == 53)
 		exit(EXIT_SUCCESS);
 	else if (key == 12)
-	{
 		mlx->fractol.iter++;
-		ft_launch_fractol(mlx);
-	}
 	else if (key == 14)
-	{
 		mlx->fractol.iter--;
-		ft_launch_fractol(mlx);
-	}
 	else if (key == 6)
 		mlx->pthreads += 5;
 	else if (key == 7)
 		mlx->pthreads -= 5;
 	else if (key >= 18 && key <= 23)
-	{
 		mlx->fractol.color = key;
-		ft_launch_fractol(mlx);
-	}
+	else if (key >= 123 && key <= 126)
+		ft_move_arrows(key, mlx);
+	ft_launch_fractol(mlx);
 	return (0);
 }
 

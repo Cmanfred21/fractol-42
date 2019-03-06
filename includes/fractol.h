@@ -6,7 +6,7 @@
 /*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 16:39:40 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/03/05 22:47:17 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/03/06 16:14:47 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,15 @@
 # include "libft.h"
 # include "mlx.h"
 
+void	ft_move_arrows(int key, t_mlx *mlx);
+
 int		ft_close_window(int *argc);
 
 int		ft_pixel_color(int iter, int max, int scheme);
+
+void	*ft_drop(void *inc);
+
+void	*ft_lambda(void *inc);
 
 void	*ft_spider(void *inc);
 

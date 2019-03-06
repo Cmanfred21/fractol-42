@@ -6,7 +6,7 @@
 /*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 18:35:48 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/03/05 22:46:17 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/03/06 16:22:07 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,13 @@ static int	ft_check_arg(int argc, char *argv)
 	if (argc < 2 || (ft_strcmp(argv, "julia") &&
 				ft_strcmp(argv, "mandelbrot")
 				&& ft_strcmp(argv, "spider")
-				&& ft_strcmp(argv, "burning_ship")))
+				&& ft_strcmp(argv, "burning_ship")
+				&& ft_strcmp(argv, "lambda")
+				&& ft_strcmp(argv, "drop")))
 	{
-		ft_putendl("usage: ./fractol fractol_name");
-		ft_putendl("available names: julia, mandelbrot");
+		ft_putendl("usage: ./fractol fractol_names");
+		ft_putendl("available names:");
+		ft_putendl("julia, mandelbrot, spider, burning_ship, drop, lambda");
 		return (1);
 	}
 	return (0);

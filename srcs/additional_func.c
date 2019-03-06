@@ -6,11 +6,12 @@
 /*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 14:44:58 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/03/05 22:44:37 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/03/06 16:14:22 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+#include <stdlib.h>
 
 int		ft_close_window(int *argc)
 {
@@ -33,6 +34,10 @@ void	*ft_fractol_hq(void *inc)
 		ft_spider(inc);
 	else if (mlx->name == 'b')
 		ft_burning_ship(inc);
+	else if (mlx->name == 'l')
+		ft_lambda(inc);
+	else if (mlx->name == 'd')
+		ft_drop(inc);
 	return (NULL);
 }
 
@@ -70,4 +75,20 @@ int		ft_pixel_color(int iter, int max, int scheme)
 	else
 		return (12345678 * iter);
 	return (0);
+}
+
+void	ft_move_arrows(int key, t_mlx *mlx)
+{
+	double	step;
+
+	step = 10;
+	if (key == 123)
+		mlx->cam.offsetx += step;
+	else if (key == 124)
+		mlx->cam.offsetx -= step;
+	else if (key == 125)
+		mlx->cam.offsety -= step;
+	else if (key == 126)
+		mlx->cam.offsety += step;
+	ft_launch_fractol(mlx);
 }

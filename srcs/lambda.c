@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   spider.c                                           :+:      :+:    :+:   */
+/*   mandelbrot.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/05 17:39:33 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/03/06 16:05:26 by cmanfred         ###   ########.fr       */
+/*   Created: 2019/03/05 15:26:05 by cmanfred          #+#    #+#             */
+/*   Updated: 2019/03/06 14:31:58 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <pthread.h>
 #include "fractol.h"
 
 static int	ft_change_num(t_fractol *f)
 {
+	double	p;
+	double	q;
+
 	f->old_re = f->new_re;
 	f->old_im = f->new_im;
-	f->new_re = f->old_re * f->old_re - f->old_im * f->old_im + f->c_re;
-	f->new_im = 2 * f->old_re * f->old_im + f->c_im;
-	f->c_re = f->c_re / 2 + f->new_re;
-	f->c_im = f->c_im / 2 + f->new_im;
+	p = f->old_re - f->old_re * f->old_re + f->old_im * f->old_im;
+	q = f->old_im - 2 * f->old_re * f->old_im;
+	f->new_re = f->c_re * p - f->c_im * q;
+	f->new_im = f->c_re * q + f->c_im * p;
 	if ((f->new_re * f->new_re + f->new_im * f->new_im) > 4)
 		return (1);
 	return (0);
@@ -30,13 +34,13 @@ static void	count_point(int x, int y, t_fractol f, t_mlx *mlx)
 	int		i;
 
 	i = -1;
-	f.new_re = 1.5 * (x + mlx->cam.offsetx - WIN_WIDTH / 2)
+	f.c_re = 1.5 * (x + mlx->cam.offsetx - WIN_WIDTH / 2)
 		/ (0.5 * mlx->cam.scale * WIN_WIDTH);
-	f.new_im = (y + mlx->cam.offsety - WIN_HEIGHT / 2)
+	f.c_im = (y + mlx->cam.offsety - WIN_HEIGHT / 2)
 		/ (0.5 * mlx->cam.scale * WIN_HEIGHT);
-	f.c_re = f.new_re;
-	f.c_im = f.new_im;
 	i = -1;
+	f.new_re = 0.5;
+	f.new_im = 0;
 	while (++i < f.iter)
 		if (ft_change_num(&f))
 			break ;
@@ -45,7 +49,7 @@ static void	count_point(int x, int y, t_fractol f, t_mlx *mlx)
 					f.color));
 }
 
-void		*ft_spider(void *inc)
+void		*ft_lambda(void *inc)
 {
 	t_fractol	f;
 	int			x;

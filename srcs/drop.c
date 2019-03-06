@@ -6,20 +6,19 @@
 /*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 17:39:33 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/03/06 16:05:26 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/03/06 16:22:40 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+#include <math.h>
 
 static int	ft_change_num(t_fractol *f)
 {
 	f->old_re = f->new_re;
 	f->old_im = f->new_im;
-	f->new_re = f->old_re * f->old_re - f->old_im * f->old_im + f->c_re;
-	f->new_im = 2 * f->old_re * f->old_im + f->c_im;
-	f->c_re = f->c_re / 2 + f->new_re;
-	f->c_im = f->c_im / 2 + f->new_im;
+	f->new_re = tan(f->old_re * f->old_re - f->old_im * f->old_im + f->c_re);
+	f->new_im = 2 * tan(f->old_re * f->old_im + f->c_im);
 	if ((f->new_re * f->new_re + f->new_im * f->new_im) > 4)
 		return (1);
 	return (0);
@@ -45,7 +44,7 @@ static void	count_point(int x, int y, t_fractol f, t_mlx *mlx)
 					f.color));
 }
 
-void		*ft_spider(void *inc)
+void		*ft_drop(void *inc)
 {
 	t_fractol	f;
 	int			x;
