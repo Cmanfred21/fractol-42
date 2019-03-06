@@ -6,7 +6,7 @@
 /*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 17:39:48 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/03/06 13:53:50 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/03/06 16:42:30 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ static int	ft_mouse_down(int but, int x, int y, t_mlx *mlx)
 		mlx->cam.offsety += ((y - WIN_HEIGHT / 2 +
 					mlx->cam.offsety) * (1.1f - 1.0f));
 		mlx->cam.scale *= 1.1f;
+		ft_launch_fractol(mlx);
 	}
 	if (but == 5)
 	{
@@ -31,6 +32,7 @@ static int	ft_mouse_down(int but, int x, int y, t_mlx *mlx)
 		mlx->cam.offsety -= ((y - WIN_HEIGHT / 2
 					+ mlx->cam.offsety) * (1.1f - 1.0f));
 		mlx->cam.scale *= 0.9f;
+		ft_launch_fractol(mlx);
 	}
 	mlx->mouse.down |= (1 << but);
 	ft_launch_fractol(mlx);
@@ -48,9 +50,15 @@ static int	hook_keydown(int key, t_mlx *mlx)
 	else if (key == 14)
 		mlx->fractol.iter--;
 	else if (key == 6)
-		mlx->pthreads += 5;
+	{
+		if (mlx->pthreads < 10000)
+			mlx->pthreads += 5;
+	}
 	else if (key == 7)
-		mlx->pthreads -= 5;
+	{
+		if (mlx->pthreads > 5)
+			mlx->pthreads -= 5;
+	}
 	else if (key >= 18 && key <= 23)
 		mlx->fractol.color = key;
 	else if (key >= 123 && key <= 126)
