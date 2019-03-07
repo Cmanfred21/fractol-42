@@ -6,7 +6,7 @@
 /*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 18:35:48 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/03/06 16:49:54 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/03/07 21:07:38 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,8 @@ int			main(int argc, char **argv)
 		ft_launch_fractol(mlx[i]);
 		ft_hook(mlx[i], &flag);
 	}
+	if (i == 0)
+		ft_return ("usage: ./fractol fractol_names");
 	mlx_loop(init);
 	return (0);
 }
