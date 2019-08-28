@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   image.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: cmanfred <cmanfred@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 17:43:16 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/03/05 22:47:42 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/08/16 12:41:04 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 # include "libft.h"
 # include "mlx.h"
 
-# define WIN_WIDTH 854
-# define WIN_HEIGHT 480
+# define WIN_WIDTH 2560
+# define WIN_HEIGHT 1440
 
 typedef struct	s_image
 {
@@ -71,6 +71,7 @@ typedef struct	s_mlx
 	int			ymin;
 	int			ymax;
 	char		name;
+	int			*mass;
 }				t_mlx;
 
 t_image			*ft_delimage(t_mlx *mlx, t_image *img);

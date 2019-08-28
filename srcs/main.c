@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: cmanfred <cmanfred@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 18:35:48 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/03/07 21:07:38 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/08/15 19:33:45 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	ft_init_fractol(t_mlx *mlx)
 		mlx->fractol.c_im = 0.5f;
 		mlx->fractol.c_re = -0.5f;
 	}
-	else if (mlx->name == 'm')
+	else if (mlx->name == 'm' || mlx->name == 'v')
 	{
 		mlx->fractol.new_re = 0;
 		mlx->fractol.new_im = 0;
@@ -55,6 +55,16 @@ void		ft_launch_fractol(t_mlx *mlx)
 	i = -1;
 	while (++i < mlx->pthreads)
 		pthread_join(threads[i], NULL);
+	// int y = -1;
+	// while (++y < WIN_HEIGHT)
+	// {
+	// 	int x = -1;
+	// 	while (++x < WIN_WIDTH)
+	// 		printf("%d ", mlx->mass[x + y * WIN_WIDTH]);
+	// 	printf("\n");
+	// }
+	if (mlx->name == 'v')
+		ft_color_mandelvrot(mlx);
 	mlx_put_image_to_window(mlx->init, mlx->window, mlx->image->ptr, 0, 0);
 	free(threads);
 	free(data);
@@ -73,11 +83,12 @@ static int	ft_check_arg(int argc, char *argv)
 				&& ft_strcmp(argv, "spider")
 				&& ft_strcmp(argv, "burning_ship")
 				&& ft_strcmp(argv, "lambda")
-				&& ft_strcmp(argv, "drop")))
+				&& ft_strcmp(argv, "drop")
+				&& ft_strcmp(argv, "vandelvrot")))
 	{
 		ft_putendl("usage: ./fractol fractol_names");
 		ft_putendl("available names:");
-		ft_putendl("julia, mandelbrot, spider, burning_ship, drop, lambda");
+		ft_putendl("julia, mandelbrot, spider, burning_ship, drop, lambda, mandelvrot");
 		return (1);
 	}
 	return (0);

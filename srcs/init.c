@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: cmanfred <cmanfred@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 15:43:50 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/03/05 22:38:36 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/08/28 17:36:30 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,11 @@ t_mlx	*ft_init(char frname, void *init)
 	mlx->mouse.x = 0;
 	mlx->mouse.y = 0;
 	mlx->cam.scale = 1;
-	mlx->pthreads = 120;
+	mlx->pthreads = 1;
 	mlx->name = frname;
-	mlx->fractol.iter = 24;
+	mlx->fractol.iter = 5000;
 	mlx->fractol.color = 1;
+	mlx->mass = (int *)ft_memalloc(sizeof(int) * WIN_WIDTH * WIN_HEIGHT);
 	if (frname != 'j')
 		mlx->mouse.flag = 1;
 	return (mlx);

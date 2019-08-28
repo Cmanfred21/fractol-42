@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   additional_func.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmanfred <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: cmanfred <cmanfred@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 14:44:58 by cmanfred          #+#    #+#             */
-/*   Updated: 2019/03/06 16:14:22 by cmanfred         ###   ########.fr       */
+/*   Updated: 2019/08/15 18:43:55 by cmanfred         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ void	*ft_fractol_hq(void *inc)
 		ft_lambda(inc);
 	else if (mlx->name == 'd')
 		ft_drop(inc);
+	else if (mlx->name == 'v')
+		ft_mandelvrot(inc);
 	return (NULL);
 }
 
