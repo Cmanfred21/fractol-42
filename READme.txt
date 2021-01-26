@@ -5,3 +5,5 @@ Mouse Wheel - to zoom in\out
 Space - to fix parameters in Julia
 Holding left mouse and move - to move the image
 Arrows - to move image
+
+![Пример](https://raw.githubusercontent.com/GlThibault/pics/master/fractol_mandelbrot.png)
