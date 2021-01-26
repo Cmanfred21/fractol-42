@@ -1,3 +1,4 @@
+
 Z, X - to change amount of threads (+5 and -5 respectively)
 Q, E - to change amount of iterations (+1 and -1 respectively)
 1, 2, 3, 4 ,5 - to change the coloring scheme
